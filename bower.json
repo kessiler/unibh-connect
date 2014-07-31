@@ -1,0 +1,6 @@
+{
+    "name": "unibh-connect",
+    "dependencies": {
+        "angular": "1.2.21"
+    }
+}
