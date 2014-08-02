@@ -1,38 +1,15 @@
-// Generated on 2014-07-31 using generator-webapp 0.4.9
 'use strict';
-
-// # Globbing
-// for performance reasons we're only matching one level down:
-// 'test/spec/{,*/}*.js'
-// use this if you want to recursively match all subfolders:
-// 'test/spec/**/*.js'
-
 module.exports = function (grunt) {
 
-    // Load grunt tasks automatically
     require('load-grunt-tasks')(grunt);
-
-    // Time how long tasks take. Can help when optimizing build times
     require('time-grunt')(grunt);
-
-    // Configurable paths
     var config = {
         app: 'app',
         dist: 'dist'
     };
-
-    // Define the configuration for all the tasks
     grunt.initConfig({
-
-        // Project settings
         config: config,
-
-        // Watches files for changes and runs tasks based on the changed files
         watch: {
-            bower: {
-                files: ['bower.json'],
-                tasks: ['bowerInstall']
-            },
             js: {
                 files: ['<%= config.app %>/scripts/{,*/}*.js'],
                 tasks: ['jshint'],
@@ -69,28 +46,13 @@ module.exports = function (grunt) {
                 port: 9000,
                 open: true,
                 livereload: 35729,
-                // Change this to '0.0.0.0' to access the server from outside
                 hostname: 'localhost'
             },
             livereload: {
                 options: {
-                    middleware: function(connect) {
+                    middleware: function (connect) {
                         return [
                             connect.static('.tmp'),
-                            connect().use('/bower_components', connect.static('./bower_components')),
-                            connect.static(config.app)
-                        ];
-                    }
-                }
-            },
-            test: {
-                options: {
-                    open: false,
-                    port: 9001,
-                    middleware: function(connect) {
-                        return [
-                            connect.static('.tmp'),
-                            connect.static('test'),
                             connect().use('/bower_components', connect.static('./bower_components')),
                             connect.static(config.app)
                         ];
@@ -108,19 +70,20 @@ module.exports = function (grunt) {
         // Empties folders to start fresh
         clean: {
             dist: {
-                files: [{
-                    dot: true,
-                    src: [
-                        '.tmp',
-                        '<%= config.dist %>/*',
-                        '!<%= config.dist %>/.git*'
-                    ]
-                }]
+                files: [
+                    {
+                        dot: true,
+                        src: [
+                            '.tmp',
+                            '<%= config.dist %>/*',
+                            '!<%= config.dist %>/.git*'
+                        ]
+                    }
+                ]
             },
             server: '.tmp'
         },
 
-        // Make sure code styles are up to par and there are no obvious mistakes
         jshint: {
             options: {
                 jshintrc: '.jshintrc',
@@ -134,15 +97,6 @@ module.exports = function (grunt) {
             ]
         },
 
-        // Mocha testing framework configuration options
-        mocha: {
-            all: {
-                options: {
-                    run: true,
-                    urls: ['http://<%= connect.test.options.hostname %>:<%= connect.test.options.port %>/index.html']
-                }
-            }
-        },
 
         // Add vendor prefixed styles
         autoprefixer: {
@@ -150,20 +104,14 @@ module.exports = function (grunt) {
                 browsers: ['last 1 version']
             },
             dist: {
-                files: [{
-                    expand: true,
-                    cwd: '.tmp/styles/',
-                    src: '{,*/}*.css',
-                    dest: '.tmp/styles/'
-                }]
-            }
-        },
-
-        // Automatically inject Bower components into the HTML file
-        bowerInstall: {
-            app: {
-                src: ['<%= config.app %>/index.html'],
-                exclude: ['bower_components/bootstrap/dist/js/bootstrap.js']
+                files: [
+                    {
+                        expand: true,
+                        cwd: '.tmp/styles/',
+                        src: '{,*/}*.css',
+                        dest: '.tmp/styles/'
+                    }
+                ]
             }
         },
 
@@ -204,23 +152,27 @@ module.exports = function (grunt) {
         // The following *-min tasks produce minified files in the dist folder
         imagemin: {
             dist: {
-                files: [{
-                    expand: true,
-                    cwd: '<%= config.app %>/images',
-                    src: '{,*/}*.{gif,jpeg,jpg,png}',
-                    dest: '<%= config.dist %>/images'
-                }]
+                files: [
+                    {
+                        expand: true,
+                        cwd: '<%= config.app %>/images',
+                        src: '{,*/}*.{gif,jpeg,jpg,png}',
+                        dest: '<%= config.dist %>/images'
+                    }
+                ]
             }
         },
 
         svgmin: {
             dist: {
-                files: [{
-                    expand: true,
-                    cwd: '<%= config.app %>/images',
-                    src: '{,*/}*.svg',
-                    dest: '<%= config.dist %>/images'
-                }]
+                files: [
+                    {
+                        expand: true,
+                        cwd: '<%= config.app %>/images',
+                        src: '{,*/}*.svg',
+                        dest: '<%= config.dist %>/images'
+                    }
+                ]
             }
         },
 
@@ -236,12 +188,14 @@ module.exports = function (grunt) {
                     removeRedundantAttributes: true,
                     useShortDoctype: true
                 },
-                files: [{
-                    expand: true,
-                    cwd: '<%= config.dist %>',
-                    src: '{,*/}*.html',
-                    dest: '<%= config.dist %>'
-                }]
+                files: [
+                    {
+                        expand: true,
+                        cwd: '<%= config.dist %>',
+                        src: '{,*/}*.html',
+                        dest: '<%= config.dist %>'
+                    }
+                ]
             }
         },
 
@@ -274,25 +228,28 @@ module.exports = function (grunt) {
         // Copies remaining files to places other tasks can use
         copy: {
             dist: {
-                files: [{
-                    expand: true,
-                    dot: true,
-                    cwd: '<%= config.app %>',
-                    dest: '<%= config.dist %>',
-                    src: [
-                        '*.{ico,png,txt}',
-                        '.htaccess',
-                        'images/{,*/}*.webp',
-                        '{,*/}*.html',
-                        'styles/fonts/{,*/}*.*'
-                    ]
-                }, {
-                    expand: true,
-                    dot: true,
-                    cwd: 'bower_components/bootstrap/dist',
-                    src: ['fonts/*.*'],
-                    dest: '<%= config.dist %>'
-                }]
+                files: [
+                    {
+                        expand: true,
+                        dot: true,
+                        cwd: '<%= config.app %>',
+                        dest: '<%= config.dist %>',
+                        src: [
+                            '*.{ico,png,txt}',
+                            '.htaccess',
+                            'images/{,*/}*.webp',
+                            '{,*/}*.html',
+                            'styles/fonts/{,*/}*.*'
+                        ]
+                    },
+                    {
+                        expand: true,
+                        dot: true,
+                        cwd: 'bower_components/bootstrap/dist',
+                        src: ['fonts/*.*'],
+                        dest: '<%= config.dist %>'
+                    }
+                ]
             },
             styles: {
                 expand: true,
@@ -339,21 +296,6 @@ module.exports = function (grunt) {
         grunt.task.run([target ? ('serve:' + target) : 'serve']);
     });
 
-    grunt.registerTask('test', function (target) {
-        if (target !== 'watch') {
-            grunt.task.run([
-                'clean:server',
-                'concurrent:test',
-                'autoprefixer'
-            ]);
-        }
-
-        grunt.task.run([
-            'connect:test',
-            'mocha'
-        ]);
-    });
-
     grunt.registerTask('build', [
         'clean:dist',
         'useminPrepare',
@@ -370,7 +312,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('default', [
         'newer:jshint',
-        'test',
         'build'
     ]);
 };
