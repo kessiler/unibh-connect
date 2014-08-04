@@ -1,5 +1,7 @@
 {
     "name": "unibh-connect",
+    "version": "0.0.1",
+    "main": "app/index.html",
     "dependencies": {
         "angular": "1.2.21"
     }
