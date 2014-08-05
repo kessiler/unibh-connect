@@ -2,8 +2,10 @@
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')();
 
-gulp.task('watch', ['build'], function(cb) {
+gulp.task('watch', ['build'], function(callback) {
     plugins.connect.server({
-        root: 'dist'
+        root: 'src',
+        port: 9000,
+        livereload: true
     });
 });

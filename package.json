@@ -1,8 +1,11 @@
 {
     "private": true,
     "devDependencies": {
-        "gulp": "^3.8.6",
+        "gulp": "^3.8.7",
+        "gulp-connect": "~2.0.6",
+        "gulp-load-plugins": "^0.5.3",
+        "gulp-rimraf": "^0.1.0",
         "require-dir": "^0.1.0",
-        "gulp-connect": "~2.0.6"
+        "run-sequence": "^0.3.6"
     }
 }
